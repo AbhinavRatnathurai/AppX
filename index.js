@@ -1,6 +1,4 @@
 window.addEventListener("scroll", function () {
-  var top = this.document.querySelector(".top");
-  if (this.window.scrollY > 0) {
-    top.className = "sticky";
-  }
+  var header = this.document.querySelector("header");
+  header.classList.toggle("sticky", this.window.scrollY > 0);
 });
