@@ -45,11 +45,11 @@ nav {
   padding: 10px 0;
 }
 
-#navlogo {
+.navlogo {
   display: none;
 }
 
-#navlogo h3 {
+.navlogo h3 {
   font-size: 2rem;
 }
 
@@ -95,6 +95,7 @@ nav a {
   animation: loading 1s ease-out;
   font-weight: 800;
   color: azure;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 .discription img {
@@ -111,13 +112,18 @@ nav a {
     background-color: rgba(240, 248, 255, 0.705);
   }
 
+  .sticky .navlogo {
+    color: black;
+  }
+
   nav {
     justify-content: space-between;
     align-items: center;
   }
 
-  #navlogo {
+  .navlogo {
     display: block;
+    color: azure;
   }
 
   .discription {
@@ -145,9 +151,15 @@ nav a {
   }
 
   .discription img {
+    margin-left: 50px;
     margin-right: 50px;
     display: block;
     max-width: 40%;
     min-width: 400px;
+    transition: transform 0.5s ease-out;
+  }
+
+  .discription img:hover {
+    transform: scale(1.03);
   }
 }
