@@ -36,6 +36,26 @@
         Buy The Right Product
       </h1>
     </section>
+    <section class="products">
+        <h2>Products</h2>
+        <section class="productD">
+          <?php
+          include("db.php");
+          $SQL="select pId, pName, pImg, pPrice from products";
+          $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
+          while($arrayp=mysqli_fetch_array($exeSQL))
+          {
+            echo "<a href=''>";
+            echo "<section class='product'>";
+            echo "<img src=img/".$arrayp['pImg'].">";
+            echo "<h4>".$arrayp['pName']."</h4>";
+            echo "<h5>RS.".$arrayp['pPrice']."</h5>";
+            echo "</section>";
+            echo "</a>";
+          };
+          ?>
+        </section>
+    </section>
     <script src="index.js"></script>
   </body>
 </html>
