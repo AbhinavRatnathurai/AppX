@@ -41,13 +41,13 @@
         <section class="productD">
           <?php
           include("db.php");
-          $SQL="select pId, pName, pImg, pPrice from products";
+          $SQL="select pId, pName, pImg, pPrice from product";
           $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
           while($arrayp=mysqli_fetch_array($exeSQL))
           {
-            echo "<a href=''>";
+            echo "<a href='product.php?pid=".$arrayp['pId']."'>";
             echo "<section class='product'>";
-            echo "<img src=img/".$arrayp['pImg'].">";
+            echo "<img src=img/".$arrayp['pImg']." height='250' width='250' >";
             echo "<h4>".$arrayp['pName']."</h4>";
             echo "<h5>RS.".$arrayp['pPrice']."</h5>";
             echo "</section>";
