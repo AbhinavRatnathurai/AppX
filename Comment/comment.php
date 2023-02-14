@@ -17,7 +17,7 @@
             echo "<input type='hidden' name='variable1' value='$pid'> ";
           ?>
           <span class="details">Add your comment hear</span>
-          <textarea id="comment" name="comment" id="comment"> </textarea>
+          <textarea id="comment" name="comment" id="comment" required> </textarea>
           <input type="submit" />
           <input type="reset" name="reset" />
         </form>
