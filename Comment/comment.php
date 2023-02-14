@@ -11,7 +11,11 @@
     <div class="container">
       <div class="title">Comment Form</div>
       <div class="content">
-        <form name="commentf" action="" method="post">
+        <form name="commentf" action="submit.php" method="post">
+          <?php
+            $pid=$_POST['variable1'];
+            echo "<input type='hidden' name='variable1' value='$pid'> ";
+          ?>
           <span class="details">Add your comment hear</span>
           <textarea id="comment" name="comment" id="comment"> </textarea>
           <input type="submit" />
