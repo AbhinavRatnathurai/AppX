@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,41 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce Website - shoping cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href=" style.css">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-     <header>
-        <div class="nav container">
-            <a href="#" class="logo"> AppX </a>
-
-            <i class='bx bxs-shopping-bag' id="cart-icon"></i>
-            <div class="cart">
-                <h2 class="cart-title">Your Cart </h2>
-                <div class= "cart-content">
-                
-                </div>   
-                <div class="total">
-                    <div class="total-title">Total </div>
-                    <div class="total-price">$00</div>
-                </div>
-                <button type="button" class="btn-buy">Buy Now</button>
-                <i class="bx bx-x" id="close-cart"></i>   
+    <header>
+        <nav>
+            <div class="navlogo">
+                <h3>AppX</h3>
             </div>
-
-        </div>
-     </header>
-     <section class=" shop container" height="600" width="600">
-        <h2 class="section-title"> shop Products</h2>
+            <div class="navlinks">
+            <ul>
+                <li><a href="../Main/index.php">Home</a></li>
+                <li><a href="">About Us</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="container">
         <div class="shop-content">
             <div class="product-box">
-                <img src="img/F1.jpeg" alt="" class="product-img" height="600" width="600">
-                <h2 class="product-title">F1 cap </h2>
-                <span class="price">$15</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
+                <?php
+                    include("../Main/db.php");
+                    $pid = $_GET['pid'];
+
+                    $SQL="SELECT pId, pName, pPrice, pImg, pDiscription FROM product WHERE pId=". $pid;
+                    $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
+
+                    while($arrayp=mysqli_fetch_array($exeSQL)){
+                        echo "<section class='img'>";
+                        echo "<img src='../Main/img/" . $arrayp['pImg'] . "' alt='' class='product-img'>";
+                        echo "</section>";
+                        echo "<section class='details'>";
+                        echo "<h2 class='product-title'>" . $arrayp['pName'] . "</h2>";
+                        echo "<span class='price'>RS." . $arrayp['pPrice']. "</span>";
+                        echo "<p class='descript'>" . $arrayp['pDiscription'] . "</p>";
+                        echo "</section>";
+                    }
+                ?>
             </div>
+            <?php
+            echo "<section class='comments'>";
+            echo "<section class='btn'>";
+            echo "<form name='commentf' action='../Comment/comment.php' method='post'>";
+            //echo "<textarea id='comment' name='comment' id='comment'> </textarea>";
+            echo "<input type='hidden' name='variable1' value='$pid'> ";
+            echo "<input type='submit' value='Write Comment'/>";
+            echo "</form>";
+            echo "</section>";
+            echo "<h4>COMMENTS </h4>";
+            $show="SELECT comm FROM comment WHERE pId=". $pid;
+            $result=mysqli_query($conn, $show);
+            while($arrayp=mysqli_fetch_array($result))
+            {
+              echo "<section class='comment'>";
+              echo "<p>" . $arrayp['comm'] . "</p>";
+              echo "</section>";
+            };
+            echo "</section>";
+            ?>
         </div>           
-     </section>
-     <script src="main.js"></script>
+    </section>
+    <script src="index.js"></script>
 </body>
 </html>

@@ -20,6 +20,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -208,10 +209,10 @@ nav a {
     transition: transform 0.5s ease-out;
   }
 
-  .discription img:hover {
+  /*.discription img:hover {
     transform: scale(1.03);
   }
-
+*/
   .productD {
     display: flex;
     flex-direction: row;

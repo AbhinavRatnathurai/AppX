@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="index.css" />
     <title>AppX</title>
   </head>
-  <body>
+  <body id="top">
     <header>
       <nav>
         <div class="navlogo">
@@ -21,10 +21,9 @@
         </div>
         <div class="navlinks">
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Services</a></li>
-            <li><a href="">Help</a></li>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#p">Products</a></li>
+            <li><a href="">About us</a></li>
           </ul>
         </div>
       </nav>
@@ -36,16 +35,17 @@
         Buy The Right Product
       </h1>
     </section>
-    <section class="products">
+    <section class="products" id="p">
         <h2>Products</h2>
         <section class="productD">
           <?php
           include("db.php");
+          //echo "<p>hello</p>";
           $SQL="select pId, pName, pImg, pPrice from product";
           $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
           while($arrayp=mysqli_fetch_array($exeSQL))
           {
-            echo "<a href='../Product/product.php?pid=".$arrayp['pId']."'>";
+            echo "<a href='../Product/buypage.php?pid=".$arrayp['pId']."'>";
             echo "<section class='product'>";
             echo "<img src=img/".$arrayp['pImg']." height='250' width='250' >";
             echo "<h4>".$arrayp['pName']."</h4>";

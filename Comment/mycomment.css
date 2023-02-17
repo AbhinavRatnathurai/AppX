@@ -1,5 +1,15 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
 * {
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -7,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 90vh;
+  animation: fadein 0.5s ease-out;
 }
 
 .container {
@@ -70,8 +81,28 @@ input {
 
 input[type="submit"] {
   margin: 10px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 input[type="reset"] {
   margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+form a {
+  width: 350px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 5px 0;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
