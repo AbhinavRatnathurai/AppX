@@ -17,21 +17,20 @@
     <div class="container">
       <div class="title">Comment Form</div>
       <div class="content">
-        <form name="commentf" action="submit.php" method="post">
+        <form name="commentf" action="submit.php" onsubmit='return validateForm();'  method="post">
+          <span class='details'>Add your comment hear</span>
+          <textarea id='comment' name='comment' placeholder="Write the comment"></textarea>
+          <input type='submit' />
+          <input type='reset' name='reset' />
           <?php
             $pid=$_POST['variable1'];
             echo "<input type='hidden' name='variable1' value='$pid'> ";
-          
-            echo "<span class='details'>Add your comment hear</span>";
-            echo "<textarea id='comment' name='comment' id='comment'> </textarea>";
-            echo "<input type='submit' required/>";
-            echo "<input type='reset' name='reset' />";
-        
             echo "<a href='../Product/buypage.php?pid=".$pid ."'> Back </a>";
           ?>
         </form>
       </div>
     </div>
+    <script src='comment.js'></script>
   </body>
 </html>
 
