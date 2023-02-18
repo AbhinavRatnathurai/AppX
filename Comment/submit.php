@@ -5,6 +5,6 @@
     echo "$id";
     $SQL="insert into comment (comm, csRate , pId) values ('$comm', 2.3, $id)";
     $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
-    header('Location:../Product/product.php?pid='.$id);
+    header('Location:../Product/buypage.php?pid='.$id);
     die();
 ?>  

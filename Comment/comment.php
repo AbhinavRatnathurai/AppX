@@ -21,13 +21,13 @@
           <?php
             $pid=$_POST['variable1'];
             echo "<input type='hidden' name='variable1' value='$pid'> ";
-          ?>
-          <span class="details">Add your comment hear</span>
-          <textarea id="comment" name="comment" id="comment" required> </textarea>
-          <input type="submit" />
-          <input type="reset" name="reset" />
-          <?php
-          echo "<a href='../Product/buypage.php?pid=".$_POST['variable1']."'> Back </a>";
+          
+            echo "<span class='details'>Add your comment hear</span>";
+            echo "<textarea id='comment' name='comment' id='comment'> </textarea>";
+            echo "<input type='submit' required/>";
+            echo "<input type='reset' name='reset' />";
+        
+            echo "<a href='../Product/buypage.php?pid=".$pid ."'> Back </a>";
           ?>
         </form>
       </div>
