@@ -34,7 +34,7 @@
                     include("../Main/db.php");
                     $pid = $_GET['pid'];
 
-                    $SQL="SELECT pId, pName, pPrice, pImg, pDiscription FROM product WHERE pId=". $pid;
+                    $SQL="SELECT pId, pName, pPrice, pImg, pDescript FROM product WHERE pId=". $pid;
                     $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
 
                     while($arrayp=mysqli_fetch_array($exeSQL)){
@@ -44,7 +44,7 @@
                         echo "<section class='details'>";
                         echo "<h2 class='product-title'>" . $arrayp['pName'] . "</h2>";
                         echo "<span class='price'>RS." . $arrayp['pPrice']. "</span>";
-                        echo "<p class='descript'>" . $arrayp['pDiscription'] . "</p>";
+                        echo "<p class='descript'>" . $arrayp['pDescript'] . "</p>";
                         echo "</section>";
                     }
                 ?>
