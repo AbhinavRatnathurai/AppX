@@ -18,7 +18,7 @@
       <div class="title">Comment Form</div>
       <div class="content">
         <form name="commentf" action="submit.php" onsubmit='return validateForm();'  method="post">
-          <span class='details'>Add your comment hear</span>
+          <span class='details'>Add your comment here</span>
           <textarea id='comment' name='comment' placeholder="Write the comment"></textarea>
           <input type='submit' />
           <input type='reset' name='reset' />
