@@ -8,4 +8,4 @@
         $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
         header('Location:../Product/buypage.php?pid='.$id);
     }
-?>  
+?>
