@@ -23,7 +23,7 @@
           <ul>
             <li><a href="#top">Home</a></li>
             <li><a href="#p">Products</a></li>
-            <li><a href="">About us</a></li>
+            <!--<li><a href="">About us</a></li>-->
           </ul>
         </div>
       </nav>
@@ -42,7 +42,7 @@
           include("db.php");
           //echo "<p>hello</p>";
           $SQL="select pId, pName, pImg, pPrice from product";
-          $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
+          $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));;
           while($arrayp=mysqli_fetch_array($exeSQL))
           {
             echo "<a href='../Product/buypage.php?pid=".$arrayp['pId']."'>";

@@ -22,7 +22,7 @@
             <div class="navlinks">
             <ul>
                 <li><a href="../Main/index.php">Home</a></li>
-                <li><a href="">About Us</a></li>
+                <!--<li><a href="">About Us</a></li>-->
             </ul>
             </div>
         </nav>
@@ -59,12 +59,19 @@
             echo "</form>";
             echo "</section>";
             echo "<h4>COMMENTS </h4>";
-            $show="SELECT comm FROM comment WHERE pId=". $pid;
+            $show="SELECT comm, csRate FROM comment WHERE pId=". $pid;
             $result=mysqli_query($conn, $show);
             while($arrayp=mysqli_fetch_array($result))
             {
               echo "<section class='comment'>";
-              echo "<p>" . $arrayp['comm'] . "</p>";
+              echo "<section class='rating'>";
+              if($arrayp['csRate']==NULL){
+                echo "<p>NULL</p>";
+              }else{
+                echo "<p>". $arrayp['csRate'] . " / 5</p>";
+              };
+              echo "</section>";
+              echo "<p class='comm'>" . $arrayp['comm'] . "</p>";
               echo "</section>";
             };
             echo "</section>";

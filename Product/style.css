@@ -158,6 +158,18 @@ nav a {
   border-radius: 5px;
 }
 
+.rating {
+  display: flex;
+  justify-content: right;
+  border-bottom: 1px solid lightgray;
+  margin: 0 0 10px 0;
+  padding: 4px;
+}
+
+.comm {
+  padding: 4px;
+}
+
 @media (min-width: 668px) {
   header {
     padding: 0 50px;
