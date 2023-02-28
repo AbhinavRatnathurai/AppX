@@ -148,7 +148,30 @@ def main():
     except mysql.connector.Error as err:
         print(f"Error connecting to the database: {err}")
     except Exception as e:
-        print("An error occurred:", e)
+        print("An error occurred:", e)  
+
+ # Retrieve all the comment ratings from the database
+    mycursor = cnx.cursor()
+    mycursor.execute("SELECT csRate FROM comment")
+    results = mycursor.fetchall()
+
+    tot = 0
+    count = 0
+    for x in results: 
+       if x[0] is not None:
+          tot += x[0]
+          count += 1
+
+    if count > 0:
+       avg = tot / count
+       print("Average rating:", avg)
+
+    # Update the product table with the average rating
+       mycursor.execute("UPDATE product SET psRate = %s WHERE pId = %s", (avg, 2))
+       cnx.commit()
+    else:
+       print("No ratings found")
+         
 
 
 if __name__ == '__main__':
