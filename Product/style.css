@@ -161,6 +161,8 @@ nav a {
 .rating {
   display: flex;
   justify-content: right;
+  align-items: center;
+  gap: 10px;
   border-bottom: 1px solid lightgray;
   margin: 0 0 10px 0;
   padding: 4px;
@@ -168,6 +170,14 @@ nav a {
 
 .comm {
   padding: 4px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
 }
 
 @media (min-width: 668px) {

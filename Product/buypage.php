@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href=" style.css">
 </head>
 <body>
@@ -65,10 +66,17 @@
             {
               echo "<section class='comment'>";
               echo "<section class='rating'>";
+              echo "<div class='stars'>";
+              echo "<span class='fa fa-star checked'></span>";
+              echo "<span class='fa fa-star '></span>";
+              echo "<span class='fa fa-star '></span>";
+              echo "<span class='fa fa-star '></span>";
+              echo "<span class='fa fa-star '></span>";
+              echo "</div>";
               if($arrayp['csRate']==NULL){
                 echo "<p>NULL</p>";
               }else{
-                echo "<p>". $arrayp['csRate'] . " / 5</p>";
+                echo "<p id='rate'>". $arrayp['csRate'] . "</p>";
               };
               echo "</section>";
               echo "<p class='comm'>" . $arrayp['comm'] . "</p>";
