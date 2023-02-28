@@ -67,16 +67,16 @@
               echo "<section class='comment'>";
               echo "<section class='rating'>";
               echo "<div class='stars'>";
-              echo "<span class='fa fa-star checked'></span>";
+              echo "<span class='fa fa-star '></span>";
               echo "<span class='fa fa-star '></span>";
               echo "<span class='fa fa-star '></span>";
               echo "<span class='fa fa-star '></span>";
               echo "<span class='fa fa-star '></span>";
               echo "</div>";
               if($arrayp['csRate']==NULL){
-                echo "<p>NULL</p>";
+                echo "<p class='rate'>0</p>";
               }else{
-                echo "<p id='rate'>". $arrayp['csRate'] . "</p>";
+                echo "<p class='rate'>". $arrayp['csRate'] . "</p>";
               };
               echo "</section>";
               echo "<p class='comm'>" . $arrayp['comm'] . "</p>";
