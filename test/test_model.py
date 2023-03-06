@@ -1,6 +1,6 @@
 import unittest
 
-from test_model import preprocess
+from model import preprocess
 
 class TestPreprocess(unittest.TestCase):
     
