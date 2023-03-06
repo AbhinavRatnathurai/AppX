@@ -59,7 +59,7 @@ def count_sentiment_words(sentence):
     else:
         negative_count = None
 
-    # Generate the overall sentence rank
+    # Generate the overall sentence ranks
     sentence_rank = round(calculate(positive_count, negative_count), 1)
 
     # Update the database with the calculated star rating
