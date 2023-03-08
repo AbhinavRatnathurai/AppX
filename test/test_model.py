@@ -1,7 +1,13 @@
 import unittest
 import sys
+import os
 
-sys.path.insert(0, "C:\\Users\\user\\Desktop\\AppX-Front-End\\Python_backend")
+# Get the absolute path of the current directory
+current_dir = os.path.abspath(os.path.dirname(__file__))
+
+# Join the current directory with the relative path of the Python backend directory
+backend_dir = os.path.join(current_dir, "..", "Python_backend")
+sys.path.insert(0, backend_dir)
 
 from model import preprocess
 
