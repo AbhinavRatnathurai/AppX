@@ -1,3 +1,14 @@
+const pstars = document.querySelector(".pstars");
+const prating = Math.round(document.querySelector(".psrate").value);
+
+console.log(pstars);
+console.log(prating);
+
+const spans = pstars.querySelectorAll("span");
+for (let j = 0; j < prating; j++) {
+  spans[j].classList.add("checked");
+}
+
 const stars = document.querySelectorAll(".stars");
 const comment = document.querySelectorAll(".comment");
 let length = stars.length;

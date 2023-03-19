@@ -172,12 +172,25 @@ nav a {
   margin-left: 10px;
 }
 
+.prating {
+  margin: 8px 0;
+  padding-left: 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.prating .fa {
+  font-size: 25px;
+}
+
 .comm {
   padding: 4px;
+  text-align: justify;
 }
 
 .fa {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .checked {

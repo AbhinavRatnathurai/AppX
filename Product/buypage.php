@@ -35,7 +35,7 @@
                     include("../Main/db.php");
                     $pid = $_GET['pid'];
 
-                    $SQL="SELECT pId, pName, pPrice, pImg, pDescript FROM product WHERE pId=". $pid;
+                    $SQL="SELECT pId, pName, pPrice, pImg, pDescript, psRate FROM product WHERE pId=". $pid;
                     $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
 
                     while($arrayp=mysqli_fetch_array($exeSQL)){
@@ -46,6 +46,23 @@
                         echo "<h2 class='product-title'>" . $arrayp['pName'] . "</h2>";
                         echo "<span class='price'>RS." . $arrayp['pPrice']. "</span>";
                         echo "<p class='descript'>" . $arrayp['pDescript'] . "</p>";
+                        
+                        echo "<section class='prating'>";
+                        echo "<div class='pstars'>";
+                        echo "<span class='fa fa-star '></span>";
+                        echo "<span class='fa fa-star '></span>";
+                        echo "<span class='fa fa-star '></span>";
+                        echo "<span class='fa fa-star '></span>";
+                        echo "<span class='fa fa-star '></span>";
+                        echo "</div>";
+                        if($arrayp['psRate']==NULL){
+                            //echo "<p class='rate'>0</p>";
+                            echo "<input class='psrate' type='hidden' name='rating' value='0'>";
+                        }else{
+                             //echo "<p class='rate'>". $arrayp['csRate'] . "</p>";
+                            echo "<input class='psrate' type='hidden' name='rating' value=".$arrayp['psRate'].">";
+                        };
+                        echo "</section>";
                         echo "</section>";
                     }
                 ?>
