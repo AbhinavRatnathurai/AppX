@@ -77,7 +77,7 @@
             echo "</form>";
             echo "</section>";
             echo "<h4>COMMENTS </h4>";
-            $show="SELECT comm, csRate FROM comment WHERE pId=". $pid;
+            $show="SELECT comm, csRate FROM comment WHERE pId= $pid ORDER BY cId Desc";
             $result=mysqli_query($conn, $show);
             while($arrayp=mysqli_fetch_array($result))
             {

@@ -1,12 +1,14 @@
 <?php
     include("../Main/db.php");
     $id=$_POST['variable1'];
-    $comm=$_POST['comment'];
-<<<<<<< Updated upstream
+    $comm=addslashes($_POST['comment']);
+    $str=str_replace(' ', '&nbsp;', $comm);
+    $fixedComm=nl2br($str);
+
     echo "$id";
     
     if(isset($_POST['comment'])){
-        $SQL="INSERT INTO comment (comm , pId) VALUES ('".addslashes($comm)."',$id)";
+        $SQL="INSERT INTO comment (comm , pId) VALUES ('".$fixedComm."',$id)";
         //$exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
         //echo $SQL;
         if (mysqli_query($conn, $SQL)) {
@@ -22,9 +24,8 @@
 
         // Print the output of the Python script
         echo $output;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
         header('Location:../Product/buypage.php?pid='.$id);
     }
-=======
+
 ?>
