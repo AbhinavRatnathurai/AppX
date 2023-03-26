@@ -59,7 +59,7 @@
                             //echo "<p class='rate'>0</p>";
                             echo "<input class='psrate' type='hidden' name='rating' value='0'>";
                         }else{
-                             //echo "<p class='rate'>". $arrayp['csRate'] . "</p>";
+                            echo "<p class='rate'>". $arrayp['psRate'] . "</p>";
                             echo "<input class='psrate' type='hidden' name='rating' value=".$arrayp['psRate'].">";
                         };
                         echo "</section>";
