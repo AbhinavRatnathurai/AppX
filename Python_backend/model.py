@@ -4,7 +4,7 @@ import time
 import mysql.connector
 
 # Insert your API key here
-openai.api_key = "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"
+openai.api_key = "YOUR_API_KEY"
 
 def preprocess(text):
     try:
