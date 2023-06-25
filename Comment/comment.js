@@ -3,7 +3,7 @@ function validateForm() {
   if (comm === "") {
     alert("Write the comment befor submitting");
     document.querySelector("#comment").placeholder =
-      "Write the comment before sumitting";
+      "Write the comment befor sumitting";
     return false;
   }
 }
