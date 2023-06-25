@@ -4,18 +4,19 @@ import time
 import mysql.connector
 
 # Insert your API key here
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "Your API KEY"
 
 def preprocess(text):
     try:
         # Remove special characters and numbers
         cleaned = re.sub('[^a-zA-Z.,!]', ' ', text)
-        cleaned = re.sub(r'\s+', ' ', cleaned)
+        cleaned_1 = re.sub(r'\s+', ' ', cleaned)
         # Remove unwanted spaces at the beginning and end of each sentence
-        sentences = cleaned.split(".")
-        cleaned = ".".join([sentence.strip() for sentence in sentences])
+        sentences = cleaned_1.split(".")
+        
+        cleaned_2 = ".".join([sentence.strip() for sentence in sentences])
         # Return the cleaned text
-        return cleaned.lower()
+        return cleaned_2.lower()
     except Exception as e:
         print("An error occured:", e)
     
@@ -49,6 +50,7 @@ def count_sentiment_words(sentence):
         positive_count = response["choices"][0]["text"].split("\n")
         positive_count = int(positive_count[2])
     else:
+        print("positive")
         positive_count = None
 
     response = gpt_prompt("Please analyze the following sentence and return only the numerical value of the count of words with negative connotations, including those with implicit negative meanings." + sentence)
@@ -57,6 +59,7 @@ def count_sentiment_words(sentence):
         negative_count = response["choices"][0]["text"].split("\n")
         negative_count = int(negative_count[2])
     else:
+        print("negative")
         negative_count = None
 
     # Generate the overall sentence ranks
@@ -86,14 +89,16 @@ def calculate(positive_count, negative_count):
 def calculate_star_rating(comm_db):
     # Send for text pre-processing
     processed = preprocess(comm_db)
+    print(processed)
 
     # Retrieve both positive words count and negative words count
     result = count_sentiment_words(processed)
+    print(result)
     return result
 
 
 def main():
-
+    print("Hello")
     config = {
     'user': 'root',
     'password': '',
@@ -114,7 +119,7 @@ def main():
             print(row)
 
         # define the product_id variable
-        pId = 2 # replace 1234 with the actual product_id
+        pId = 1 # replace 1234 with the actual product_id
 
         # Select all comments
         mycursor = cnx.cursor()
@@ -131,7 +136,7 @@ def main():
                 if cs_rate is None:
                     # Calculate the star rating for the comment
                     star_rating = calculate_star_rating(comm)
-
+                    print(star_rating)
                     # Update the comment with the star rating
                     cursor = cnx.cursor() # Rename mycursor to cursor
                     query = "UPDATE comment SET csRate = %s WHERE cId = %s"
@@ -167,7 +172,7 @@ def main():
        print("Average rating:", avg)
 
     # Update the product table with the average rating
-       mycursor.execute("UPDATE product SET psRate = %s WHERE pId = %s", (avg, 2))
+       mycursor.execute("UPDATE product SET psRate = %s WHERE pId = %s", (avg, 1))
        cnx.commit()
     else:
        print("No ratings found")
