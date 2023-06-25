@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,11 @@
     <title>Ecommerce Website - shoping cart</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href=" style.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -21,10 +20,10 @@
                 <h3>AppX</h3>
             </div>
             <div class="navlinks">
-            <ul>
-                <li><a href="../Main/index.php">Home</a></li>
-                <!--<li><a href="">About Us</a></li>-->
-            </ul>
+                <ul>
+                    <li><a href="../Main/index.php">Home</a></li>
+                    <!--<li><a href="">About Us</a></li>-->
+                </ul>
             </div>
         </nav>
     </header>
@@ -32,39 +31,38 @@
         <div class="shop-content">
             <div class="product-box">
                 <?php
-                    include("../Main/db.php");
-                    $pid = $_GET['pid'];
+                include("../Main/db.php");
+                $pid = $_GET['pid'];
 
-                    $SQL="SELECT pId, pName, pPrice, pImg, pDescript, psRate FROM product WHERE pId=". $pid;
-                    $exeSQL=mysqli_query($conn, $SQL) or die (mysqli_error($conn));
+                $SQL = "SELECT pId, pName, pPrice, pImg, pDescript, psRate FROM product WHERE pId=" . $pid;
+                $exeSQL = mysqli_query($conn, $SQL) or die(mysqli_error($conn));
+                while ($arrayp = mysqli_fetch_array($exeSQL)) {
+                    echo "<section class='img'>";
+                    echo "<img src='../Main/img/" . $arrayp['pImg'] . "' alt='' class='product-img'>";
+                    echo "</section>";
+                    echo "<section class='details'>";
+                    echo "<h2 class='product-title'>" . $arrayp['pName'] . "</h2>";
+                    echo "<span class='price'>RS." . $arrayp['pPrice'] . "</span>";
+                    echo "<p class='descript'>" . $arrayp['pDescript'] . "</p>";
 
-                    while($arrayp=mysqli_fetch_array($exeSQL)){
-                        echo "<section class='img'>";
-                        echo "<img src='../Main/img/" . $arrayp['pImg'] . "' alt='' class='product-img'>";
-                        echo "</section>";
-                        echo "<section class='details'>";
-                        echo "<h2 class='product-title'>" . $arrayp['pName'] . "</h2>";
-                        echo "<span class='price'>RS." . $arrayp['pPrice']. "</span>";
-                        echo "<p class='descript'>" . $arrayp['pDescript'] . "</p>";
-                        
-                        echo "<section class='prating'>";
-                        echo "<div class='pstars'>";
-                        echo "<span class='fa fa-star '></span>";
-                        echo "<span class='fa fa-star '></span>";
-                        echo "<span class='fa fa-star '></span>";
-                        echo "<span class='fa fa-star '></span>";
-                        echo "<span class='fa fa-star '></span>";
-                        echo "</div>";
-                        if($arrayp['psRate']==NULL){
-                            //echo "<p class='rate'>0</p>";
-                            echo "<input class='psrate' type='hidden' name='rating' value='0'>";
-                        }else{
-                            echo "<p class='rate'>". $arrayp['psRate'] . "</p>";
-                            echo "<input class='psrate' type='hidden' name='rating' value=".$arrayp['psRate'].">";
-                        };
-                        echo "</section>";
-                        echo "</section>";
-                    }
+                    echo "<section class='prating'>";
+                    echo "<div class='pstars'>";
+                    echo "<span class='fa fa-star '></span>";
+                    echo "<span class='fa fa-star '></span>";
+                    echo "<span class='fa fa-star '></span>";
+                    echo "<span class='fa fa-star '></span>";
+                    echo "<span class='fa fa-star '></span>";
+                    echo "</div>";
+                    if ($arrayp['psRate'] == NULL) {
+                        //echo "<p class='rate'>0</p>";
+                        echo "<input class='psrate' type='hidden' name='rating' value='0'>";
+                    } else {
+                        echo "<p class='rate'>" . $arrayp['psRate'] . "</p>";
+                        echo "<input class='psrate' type='hidden' name='rating' value=" . $arrayp['psRate'] . ">";
+                    };
+                    echo "</section>";
+                    echo "</section>";
+                }
                 ?>
             </div>
             <?php
@@ -77,32 +75,32 @@
             echo "</form>";
             echo "</section>";
             echo "<h4>COMMENTS </h4>";
-            $show="SELECT comm, csRate FROM comment WHERE pId= $pid ORDER BY cId Desc";
-            $result=mysqli_query($conn, $show);
-            while($arrayp=mysqli_fetch_array($result))
-            {
-              echo "<section class='comment'>";
-              echo "<section class='rating'>";
-              echo "<div class='stars'>";
-              echo "<span class='fa fa-star '></span>";
-              echo "<span class='fa fa-star '></span>";
-              echo "<span class='fa fa-star '></span>";
-              echo "<span class='fa fa-star '></span>";
-              echo "<span class='fa fa-star '></span>";
-              echo "</div>";
-              if($arrayp['csRate']==NULL){
-                echo "<p class='rate'>0</p>";
-              }else{
-                echo "<p class='rate'>". $arrayp['csRate'] . "</p>";
-              };
-              echo "</section>";
-              echo "<p class='comm'>" . $arrayp['comm'] . "</p>";
-              echo "</section>";
+            $show = "SELECT comm, csRate FROM comment WHERE pId= $pid ORDER BY cId Desc";
+            $result = mysqli_query($conn, $show);
+            while ($arrayp = mysqli_fetch_array($result)) {
+                echo "<section class='comment'>";
+                echo "<section class='rating'>";
+                echo "<div class='stars'>";
+                echo "<span class='fa fa-star '></span>";
+                echo "<span class='fa fa-star '></span>";
+                echo "<span class='fa fa-star '></span>";
+                echo "<span class='fa fa-star '></span>";
+                echo "<span class='fa fa-star '></span>";
+                echo "</div>";
+                if ($arrayp['csRate'] == NULL) {
+                    echo "<p class='rate'>0</p>";
+                } else {
+                    echo "<p class='rate'>" . $arrayp['csRate'] . "</p>";
+                };
+                echo "</section>";
+                echo "<p class='comm'>" . $arrayp['comm'] . "</p>";
+                echo "</section>";
             };
             echo "</section>";
             ?>
-        </div>           
+        </div>
     </section>
     <script src="index.js"></script>
 </body>
+
 </html>
